@@ -131,13 +131,13 @@ $$
 **Softmax（輸出層）**
 
 $$
-\operatorname{Softmax}(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}, \quad K = 10 \tag{5}
+Softmax(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}, \quad K = 10 \tag{5}
 $$
 
 輸出全部為正且總和為 1，可以解讀為各類別的機率。實作時（`acti_softmax.m`）先減去每一行的最大值，避免 `exp` 溢位，數學上結果不變：
 
 $$
-\operatorname{Softmax}(z)_i = \frac{e^{z_i - \max_j z_j}}{\sum_k e^{z_k - \max_j z_j} + 10^{-10}}
+Softmax(z)_i = \frac{e^{z_i - \max_j z_j}}{\sum_k e^{z_k - \max_j z_j} + 10^{-10}}
 $$
 
 分母的 $10^{-10}$ 用來防止除以 0。
